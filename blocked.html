@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nope.</title>
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body>
+  <canvas id="confettiCanvas"></canvas>
+  <div class="grain"></div>
+
+  <div class="glitch-overlay" id="glitchOverlay">
+    <div class="glitch-text">ACCESS DENIED</div>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="skull" id="skull">&#9760;</div>
+
+    <div class="rage-bar" id="rageBar">
+      <div class="rage-fill" id="rageFill"></div>
+      <div class="rage-label" id="rageLabel">threat level: mild annoyance</div>
+    </div>
+
+    <h1 class="title" id="titleText">nice try, buddy.</h1>
+    <p class="subtitle" id="roastText">loading roast...</p>
+
+    <div class="night-badge hidden" id="nightBadge">&#127769; you're up at <span id="nightTime">3am</span>. we need to talk.</div>
+
+    <div class="stats">
+      <div class="stat-card main-stat">
+        <div class="stat-number" id="daysCount">0</div>
+        <div class="stat-label">days clean</div>
+        <div class="stat-bar"><div class="stat-bar-fill" id="weekProgress"></div></div>
+        <div class="stat-sublabel" id="milestoneLabel">...</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-number small" id="hoursCount">0</div>
+          <div class="stat-label">hours reclaimed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number small" id="blockCount">0</div>
+          <div class="stat-label">relapses blocked</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="milestones" id="milestones"></div>
+
+    <div class="shame-card" id="shameCard">
+      <div class="shame-title">&#128128; hall of shame</div>
+      <div class="shame-body">
+        worst day: <span id="shameDate">—</span>
+        &mdash; <span id="shameCount">0</span> attempts.
+        <span id="shameComment">impressive, honestly.</span>
+      </div>
+    </div>
+
+    <div class="suggestion-card" id="suggestionCard">
+      <div class="suggestion-label">instead, you could:</div>
+      <div class="suggestion-text" id="suggestionText">loading...</div>
+    </div>
+
+    <div class="snake-section">
+      <button class="snake-toggle" id="snakeToggle">&#127917; bored? play snake instead</button>
+      <div class="snake-wrap hidden" id="snakeWrap">
+        <canvas id="snakeCanvas" width="280" height="280"></canvas>
+        <div class="snake-score">score: <span id="snakeScore">0</span></div>
+        <div class="snake-hint">arrow keys or swipe to play. space to restart.</div>
+      </div>
+    </div>
+
+    <button class="back-btn" onclick="history.back()">
+      &larr; fine, i'll go do something useful
+    </button>
+  </div>
+
+  <script src="blocked.js"></script>
+</body>
+</html>

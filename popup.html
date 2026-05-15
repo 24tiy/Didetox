@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08080a;--surface:#111114;--surface2:#19191e;
+  --border:#33333d;--text:#e8e6f0;--dim:#9590a6;
+  --accent:#ff6b4a;--green:#22d67a;--green-dim:#22d67a20;
+  --red:#f87171;--red-dim:#f8717118;--yellow:#fbbf24;
+}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);width:330px;padding:22px}
+.hdr{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.logo{font-size:24px;filter:grayscale(1) brightness(2)}
+.hdr-txt h1{font-size:.95rem;font-weight:800;letter-spacing:-.02em;text-transform:lowercase}
+.hdr-txt p{font-size:.58rem;color:var(--dim);font-family:'Space Mono',monospace}
+.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:14px}
+.ms{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center}
+.ms-n{font-family:'Space Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--green);line-height:1}
+.ms-l{font-size:.56rem;color:var(--dim);margin-top:3px;text-transform:uppercase;letter-spacing:.06em;font-family:'Space Mono',monospace}
+.rage-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.rage-row-bar{flex:1;height:4px;background:var(--surface2);border-radius:2px;overflow:hidden}
+.rage-row-fill{height:100%;background:var(--green);border-radius:2px;transition:all .5s}
+.rage-row-fill.r2{background:var(--yellow);width:40%}
+.rage-row-fill.r3{background:var(--accent);width:60%}
+.rage-row-fill.r4{background:var(--red);width:80%}
+.rage-row-fill.r5{background:#ff2d55;width:100%}
+.rage-row-lbl{font-size:.55rem;color:var(--dim);font-family:'Space Mono',monospace;white-space:nowrap}
+.sec{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:7px;font-family:'Space Mono',monospace}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:16px}
+.tag{padding:3px 7px;border-radius:5px;font-size:.55rem;font-family:'Space Mono',monospace;background:var(--surface);border:1px solid var(--border);color:var(--dim)}
+.shame-mini{background:var(--surface);border:1px solid #f8717133;border-radius:8px;padding:10px 12px;margin-bottom:16px;font-size:.62rem;color:var(--dim);font-family:'Space Mono',monospace}
+.shame-mini b{color:var(--red);font-weight:700}
+.sep{border-top:1px solid var(--border);padding-top:14px}
+.btn{width:100%;padding:10px;border-radius:9px;font-family:'Space Mono',monospace;font-size:.75rem;cursor:pointer;transition:all .2s;border:1px solid}
+.btn-rm{background:var(--red-dim);border-color:#f8717133;color:var(--red)}
+.btn-rm:hover{background:#f8717128}
+.btn-stay{background:var(--surface);border-color:var(--border);color:var(--text)}
+.btn-stay:hover{border-color:var(--green);color:var(--green)}
+.cd-wrap{text-align:center;margin-bottom:10px}
+.cd-timer{font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:var(--yellow)}
+.cd-lbl{font-size:.58rem;color:var(--dim);font-family:'Space Mono',monospace}
+.ready-msg{text-align:center;margin-bottom:6px;font-size:.78rem;color:var(--green);font-weight:600}
+.ready-sub{font-size:.58rem;color:var(--dim);text-align:center;margin-bottom:10px;line-height:1.5;font-family:'Space Mono',monospace}
+.taunt{font-size:.58rem;color:var(--dim);text-align:center;margin-top:7px;font-family:'Space Mono',monospace;font-style:italic}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="logo">&#9760;</div>
+  <div class="hdr-txt">
+    <h1>DiDeTOX</h1>
+    <p>doing its job since you clearly can't</p>
+  </div>
+</div>
+
+<div class="sg">
+  <div class="ms"><div class="ms-n" id="pDays">0</div><div class="ms-l">days</div></div>
+  <div class="ms"><div class="ms-n" id="pHours">0</div><div class="ms-l">hours</div></div>
+  <div class="ms"><div class="ms-n" id="pBlocks">0</div><div class="ms-l">blocked</div></div>
+</div>
+
+<div class="rage-row">
+  <div class="rage-row-lbl">rage</div>
+  <div class="rage-row-bar"><div class="rage-row-fill" id="pRage" style="width:20%"></div></div>
+  <div class="rage-row-lbl" id="pRageLvl">1/5</div>
+</div>
+
+<div class="shame-mini" id="shameMini">
+  worst day: <b id="pShameDate">—</b> with <b id="pShameCount">0</b> attempts. ouch.
+</div>
+
+<div class="sec">blacklisted</div>
+<div class="tags">
+  <span class="tag">facebook</span><span class="tag">instagram</span>
+  <span class="tag">x / twitter</span><span class="tag">tiktok</span>
+  <span class="tag">youtube</span><span class="tag">reddit</span>
+  <span class="tag">vk</span><span class="tag">discord</span>
+  <span class="tag">twitch</span><span class="tag">linkedin</span>
+  <span class="tag">telegram</span><span class="tag">+24 more</span>
+</div>
+
+<div class="sep">
+  <div id="stDefault">
+    <button class="btn btn-rm" id="reqBtn">i want out (you don't)</button>
+    <div class="taunt">starts a 7-day cooldown. we both know you'll cancel.</div>
+  </div>
+  <div id="stCooldown" class="hidden">
+    <div class="cd-wrap">
+      <div class="cd-timer" id="cdTimer">6d 23h 59m</div>
+      <div class="cd-lbl">until you can rage-quit</div>
+    </div>
+    <button class="btn btn-stay" id="cancelBtn">nevermind, i'm staying</button>
+    <div class="taunt">told ya.</div>
+  </div>
+  <div id="stReady" class="hidden">
+    <div class="ready-msg">cooldown done. you're free.</div>
+    <div class="ready-sub">chrome://extensions &rarr; find DiDeTOX &rarr; remove<br>...if you really want to go back to doomscrolling.</div>
+    <button class="btn btn-stay" id="stayBtn">actually, i'll stay</button>
+    <div class="taunt">respect.</div>
+  </div>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

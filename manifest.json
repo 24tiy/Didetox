@@ -1,0 +1,84 @@
+{
+  "manifest_version": 3,
+  "name": "DiDeTOX",
+  "version": "2.0.0",
+  "description": "You asked for this. Blocks social media. No backsies for 7 days.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://*.facebook.com/*",
+    "*://*.instagram.com/*",
+    "*://*.twitter.com/*",
+    "*://*.x.com/*",
+    "*://*.tiktok.com/*",
+    "*://*.youtube.com/*",
+    "*://*.reddit.com/*",
+    "*://*.vk.com/*",
+    "*://*.ok.ru/*",
+    "*://*.pinterest.com/*",
+    "*://*.snapchat.com/*",
+    "*://*.linkedin.com/*",
+    "*://*.tumblr.com/*",
+    "*://*.discord.com/*",
+    "*://*.web.whatsapp.com/*",
+    "*://*.web.telegram.org/*",
+    "*://*.threads.net/*",
+    "*://*.bsky.app/*",
+    "*://*.mastodon.social/*",
+    "*://*.weibo.com/*",
+    "*://*.weibo.cn/*",
+    "*://*.xiaohongshu.com/*",
+    "*://*.bilibili.com/*",
+    "*://*.douyin.com/*",
+    "*://*.line.me/*",
+    "*://*.truthsocial.com/*",
+    "*://*.bereal.com/*",
+    "*://*.quora.com/*",
+    "*://*.twitch.tv/*",
+    "*://*.t.me/*",
+    "*://*.messenger.com/*",
+    "*://*.lemon8-app.com/*",
+    "*://*.kuaishou.com/*",
+    "*://*.likee.video/*",
+    "*://*.triller.co/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "didetox@didetox.ext",
+      "strict_min_version": "109.0"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "block_socials",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html", "blocked.css", "blocked.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
